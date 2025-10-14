@@ -1,0 +1,122 @@
+body{
+  background-image:-moz-linear-gradient(135deg, (#e4dfdf), (#e6dfdf));
+}
+header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1px;
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  gap: 32px;
+  list-style: none;
+}
+
+a{
+  color: #4b4949;
+}
+
+a:hover{
+  text-decoration: underline;
+  text-decoration-color:cornflowerblue;
+}
+
+.logo{
+  width: 25%;
+}
+
+.menuItem{
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.principal{
+  background:-moz-linear-gradient(#d5d8db, #e5e7ea) ;;
+  padding: 30px;
+}
+
+.titulo-principal{
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.principalTop{
+  display: flex;
+  margin-top: .7rem;
+  align-items:center;
+}
+
+p{ 
+  border: 1px;
+  text-align:left;
+}
+
+.sistemaPc{
+  width: 120px;
+  /*float: left;*/
+  margin: 0 10px 20px 20px;
+}
+
+
+
+.servicos{
+  display: flex;
+  justify-content: center;
+  width: 940px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.servicositem{
+  background: white;
+  display: inline-block;
+  text-align: center;
+  width: 30%;
+  vertical-align: top;
+  margin: 0 1.5%;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  border: 1px solid #4b4949;
+  border-radius: 10px;
+}
+
+.bannerImage{
+  margin: 5px auto;
+  width:100%;
+}
+
+
+
+@media screen and (max-width: 767px) {
+  
+ header {
+    flex-direction: column;
+  }
+  nav{
+    font-size: 20px;
+    margin: 10px;
+  }
+  .servicos{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .servicositem{
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
+  h2{
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .sistemaPc{
+    transform: scale(1.1);
+  }
+}

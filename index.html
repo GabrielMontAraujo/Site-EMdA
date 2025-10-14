@@ -1218,18 +1218,18 @@
               </div>
             </div>
           </div>
-          <form class="contact-form">
+          <form class="contact-form" action="https://formspree.io/f/SEU_FORM_ID" method="POST">
             <div class="form-group">
-              <input type="text" placeholder="Seu Nome" required />
+              <input type="text" name="name" placeholder="Seu Nome" required />
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Seu Email" required />
+              <input type="email" name="email" placeholder="Seu Email" required />
             </div>
             <div class="form-group">
-              <input type="tel" placeholder="Seu Telefone" />
+              <input type="tel" name="phone" placeholder="Seu Telefone" />
             </div>
             <div class="form-group">
-              <textarea rows="5" placeholder="Sua Mensagem" required></textarea>
+              <textarea name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
             </div>
             <button type="submit">
               <i class="fas fa-paper-plane"></i>
@@ -1356,27 +1356,23 @@
         setTimeout(typeWriter, 500);
       }
       
-      // Validação simples do formulário
+      // Feedback visual do formulário
       const contactForm = document.querySelector('.contact-form');
       if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          // Simular envio
           const button = contactForm.querySelector('button');
           const originalText = button.innerHTML;
           
+          // Mostrar loading enquanto envia
           button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
           button.disabled = true;
           
+          // O formulário será enviado normalmente para o Formspree
+          // Este timeout é apenas para melhorar a UX
           setTimeout(() => {
-            button.innerHTML = '<i class="fas fa-check"></i> Mensagem Enviada!';
-            setTimeout(() => {
-              button.innerHTML = originalText;
-              button.disabled = false;
-              contactForm.reset();
-            }, 2000);
-          }, 1500);
+            button.innerHTML = originalText;
+            button.disabled = false;
+          }, 3000);
         });
       }
     </script>

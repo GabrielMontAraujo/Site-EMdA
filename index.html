@@ -606,8 +606,8 @@
       .contact-form button {
         padding: 1rem 2rem;
         border: none;
-        background: var(--white);
-        color: var(--primary-color);
+        background: #25D366; /* Cor oficial do WhatsApp */
+        color: var(--white);
         border-radius: 15px;
         cursor: pointer;
         font-weight: 600;
@@ -617,12 +617,33 @@
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .contact-form button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s;
+      }
+      
+      .contact-form button:hover::before {
+        left: 100%;
       }
       
       .contact-form button:hover {
-        background: var(--bg-light);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        background: #128C7E; /* Verde mais escuro do WhatsApp */
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+      }
+      
+      .contact-form button:active {
+        transform: translateY(-1px) scale(0.98);
       }
       /* Rodapé */
       footer {
@@ -1218,25 +1239,22 @@
               </div>
             </div>
           </div>
-          <form class="contact-form" action="https://formsubmit.co/gabrielmontaraujo@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Nova mensagem do site EMdA Sistemas">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
+          <form class="contact-form" id="whatsapp-form">
             <div class="form-group">
-              <input type="text" name="name" placeholder="Seu Nome" required />
+              <input type="text" id="name" placeholder="Seu Nome" required />
             </div>
             <div class="form-group">
-              <input type="email" name="email" placeholder="Seu Email" required />
+              <input type="email" id="email" placeholder="Seu Email" required />
             </div>
             <div class="form-group">
-              <input type="tel" name="phone" placeholder="Seu Telefone" />
+              <input type="tel" id="phone" placeholder="Seu Telefone" />
             </div>
             <div class="form-group">
-              <textarea name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+              <textarea id="message" rows="5" placeholder="Sua Mensagem" required></textarea>
             </div>
             <button type="submit">
-              <i class="fas fa-paper-plane"></i>
-              Enviar Mensagem
+              <i class="fab fa-whatsapp"></i>
+              Enviar pelo WhatsApp
             </button>
           </form>
         </div>
@@ -1265,8 +1283,8 @@
         </div>
         <div class="footer-section">
           <h3>Contato</h3>
-          <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
-          <p><i class="fas fa-envelope"></i> contato@emdasistemas.com.br</p>
+          <p><i class="fas fa-phone"></i> (11) 99215-7228</p>
+          <p><i class="fas fa-envelope"></i> emda@emda.com.br</p>
           <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
         </div>
       </div>
@@ -1359,23 +1377,63 @@
         setTimeout(typeWriter, 500);
       }
       
-      // Feedback visual do formulário
-      const contactForm = document.querySelector('.contact-form');
-      if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-          const button = contactForm.querySelector('button');
+      // Sistema de envio para WhatsApp
+      const whatsappForm = document.getElementById('whatsapp-form');
+      if (whatsappForm) {
+        whatsappForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // Capturar dados do formulário
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const phone = document.getElementById('phone').value;
+          const message = document.getElementById('message').value;
+          
+          // Validar campos obrigatórios
+          if (!name || !email || !message) {
+            alert('Por favor, preencha todos os campos obrigatórios!');
+            return;
+          }
+          
+          // Seu número do WhatsApp (substitua pelo seu número real)
+          const whatsappNumber = '5511999999999'; // Formato: código do país + DDD + número
+          
+          // Montar mensagem formatada
+          let whatsappMessage = `🌟 *Nova mensagem do site EMdA Sistemas* 🌟\n\n`;
+          whatsappMessage += `👤 *Nome:* ${name}\n`;
+          whatsappMessage += `📧 *Email:* ${email}\n`;
+          if (phone) {
+            whatsappMessage += `📱 *Telefone:* ${phone}\n`;
+          }
+          whatsappMessage += `\n💬 *Mensagem:*\n${message}\n\n`;
+          whatsappMessage += `📅 *Enviado em:* ${new Date().toLocaleString('pt-BR')}`;
+          
+          // Codificar para URL
+          const encodedMessage = encodeURIComponent(whatsappMessage);
+          
+          // Gerar link do WhatsApp
+          const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+          
+          // Feedback visual
+          const button = whatsappForm.querySelector('button');
           const originalText = button.innerHTML;
           
-          // Mostrar loading enquanto envia
-          button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+          button.innerHTML = '<i class="fab fa-whatsapp fa-spin"></i> Abrindo WhatsApp...';
           button.disabled = true;
           
-          // O formulário será enviado normalmente para o Formspree
-          // Este timeout é apenas para melhorar a UX
+          // Abrir WhatsApp
+          window.open(whatsappURL, '_blank');
+          
+          // Resetar formulário após sucesso
           setTimeout(() => {
-            button.innerHTML = originalText;
-            button.disabled = false;
-          }, 3000);
+            button.innerHTML = '<i class="fas fa-check"></i> Enviado com sucesso!';
+            whatsappForm.reset();
+            
+            setTimeout(() => {
+              button.innerHTML = originalText;
+              button.disabled = false;
+            }, 3000);
+          }, 1000);
         });
       }
     </script>

@@ -743,8 +743,19 @@
           margin-bottom: 6rem;
         }
         
+        .servico-img img {
+          height: 320px;
+        }
+        
         .contact-content {
           gap: 2rem;
+        }
+      }
+      
+      /* Tablets em modo retrato */
+      @media (max-width: 900px) {
+        .servico-img img {
+          height: 300px;
         }
       }
       
@@ -815,7 +826,25 @@
         }
         
         .servico-img img {
-          height: 250px;
+          height: 280px;
+          object-position: center;
+        }
+        
+        .servico-img {
+          border-radius: 15px;
+          overflow: hidden;
+        }
+        
+        /* Ajustes mobile para imagens específicas */
+        .servico-img img[src*="nfce"] {
+          height: 200px;
+          object-fit: contain;
+          padding: 15px;
+        }
+        
+        .servico-img img[src*="craiyon_151326"] {
+          height: 240px;
+          object-position: center center;
         }
         
         .servico-text {
@@ -869,6 +898,14 @@
         
         .service-item {
           padding: 2rem 1.5rem;
+        }
+        
+        .servico-img img {
+          height: 220px;
+        }
+        
+        .servico {
+          margin-bottom: 3rem;
         }
         
         .about-stats {
@@ -976,7 +1013,20 @@
         width: 100%;
         height: 400px;
         object-fit: cover;
+        object-position: center;
         transition: var(--transition);
+        border-radius: 20px;
+      }
+      
+      /* Ajustes específicos para imagens problemáticas */
+      .servico-img img[src*="nfce"] {
+        object-fit: contain;
+        background: var(--bg-light);
+        padding: 20px;
+      }
+      
+      .servico-img img[src*="craiyon_151326"] {
+        object-position: center top;
       }
       
       .servico-img:hover img {

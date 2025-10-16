@@ -825,11 +825,17 @@
         #detalhes-servicos .container {
           grid-template-columns: 1fr;
           gap: 2rem;
+          padding: 0 1rem;
         }
         
         .servico {
           max-width: 100%;
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
+          padding: 0;
+        }
+        
+        .servico-text {
+          padding: 0 0.5rem;
         }
         
         .servico-img {
@@ -965,22 +971,25 @@
         max-width: 1200px;
         margin: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
         align-items: start;
+        justify-items: center;
       }
       
       .servico {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 6rem;
-        max-width: 500px;
+        margin-bottom: 3rem;
+        width: 100%;
+        max-width: 450px;
         margin-left: auto;
         margin-right: auto;
         opacity: 0;
         transform: translateY(50px);
         animation: fadeInUp 0.8s ease-out forwards;
+        padding: 0 1rem;
       }
       
       .servico:nth-child(even) {
@@ -995,6 +1004,36 @@
       .servico-text {
         width: 100%;
         text-align: center;
+        padding: 0 1rem;
+      }
+      
+      .servico-text h3 {
+        color: var(--text-dark);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        word-wrap: break-word;
+        position: relative;
+      }
+      
+      .servico-text h3::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -8px;
+        width: 40px;
+        height: 3px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+      }
+      
+      .servico-text p {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        line-height: 1.6;
+        word-wrap: break-word;
+        hyphens: auto;
       }
       
       .servico-img {
@@ -1055,29 +1094,7 @@
         background: var(--white);
       }
       
-      .servico-text {
-        padding: 0 2rem;
-      }
-      
-      .servico-text h3 {
-        color: var(--text-dark);
-        font-family: 'Poppins', sans-serif;
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        position: relative;
-      }
-      
-      .servico-text h3::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -8px;
-        width: 50px;
-        height: 3px;
-        background: var(--gradient-primary);
-        border-radius: 2px;
-      }
+
       
       .servico-text p {
         color: var(--text-light);

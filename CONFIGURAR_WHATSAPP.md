@@ -2,7 +2,7 @@
 
 ## 🎯 **IMPORTANTE: Configure seu número!**
 
-No arquivo `index.html`, linha ~1375, altere o número do WhatsApp:
+No arquivo `index.html`, **linha 1399**, altere o número do WhatsApp:
 
 ```javascript
 const whatsappNumber = '5511999999999'; // ← MUDE AQUI!

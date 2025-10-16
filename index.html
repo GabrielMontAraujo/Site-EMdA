@@ -1026,12 +1026,13 @@
       .servico-img img {
         width: 100%;
         height: 280px;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
         transition: var(--transition);
         border-radius: 15px;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         display: block;
+        background: var(--bg-light);
       }
       
 
@@ -1044,6 +1045,14 @@
       .servico-img:hover {
         transform: translateY(-5px);
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+      
+      /* Ajustes específicos para imagens com proporções diferentes */
+      .servico-img img[src*="SAT"],
+      .servico-img img[src*="nfce"] {
+        object-fit: contain;
+        padding: 20px;
+        background: var(--white);
       }
       
       .servico-text {
@@ -1189,7 +1198,7 @@
     <!-- Serviço: Sistema PDV -->
     <div class="servico">
       <div class="servico-img">
-        <img src="https://via.placeholder.com/400x280/667eea/ffffff?text=Sistema+PDV" alt="Sistema PDV" />
+        <img src="./images/craiyon_145911_restaurant_pos_system.png" alt="Sistema PDV" />
       </div>
       <div class="servico-text">
         <h3>Sistema PDV</h3>
@@ -1201,7 +1210,7 @@
     <!-- Serviço: Controle de Estoque -->
     <div class="servico">
       <div class="servico-img">
-        <img src="https://via.placeholder.com/400x280/764ba2/ffffff?text=Controle+de+Estoque" alt="Controle de Estoque" />
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=280&q=80" alt="Controle de Estoque" />
       </div>
       <div class="servico-text">
         <h3>Controle de Estoque</h3>
@@ -1213,7 +1222,7 @@
     <!-- Serviço: SAT -->
     <div class="servico">
       <div class="servico-img">
-        <img src="https://via.placeholder.com/400x280/f093fb/ffffff?text=SAT+Fiscal" alt="SAT" />
+        <img src="./images/SAT.png" alt="SAT" />
       </div>
       <div class="servico-text">
         <h3>SAT</h3>
@@ -1225,7 +1234,7 @@
     <!-- Serviço: NFC-e -->
     <div class="servico">
       <div class="servico-img">
-        <img src="https://via.placeholder.com/400x280/667eea/ffffff?text=NFC-e" alt="NFC-e" />
+        <img src="https://images.unsplash.com/photo-1554224154-26032fced8bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=280&q=80" alt="NFC-e" />
       </div>
       <div class="servico-text">
         <h3>NFC-e</h3>

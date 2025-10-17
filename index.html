@@ -748,8 +748,7 @@
         }
         
         .servico-img img {
-          min-height: 200px;
-          max-height: 280px;
+          height: auto;
         }
         
         .contact-content {
@@ -760,8 +759,7 @@
       /* Tablets em modo retrato */
       @media (max-width: 900px) {
         .servico-img img {
-          min-height: 180px;
-          max-height: 280px;
+          height: auto;
         }
       }
       
@@ -837,7 +835,7 @@
         }
         
         .servico-text {
-          padding: 0 0.5rem;
+          padding: 0 0.25rem;
         }
         
         .servico-img {
@@ -908,11 +906,11 @@
         }
         
         .servico-img {
-          padding: 10px;
+          padding: 8px;
         }
         
         .servico-img img {
-          height: 200px;
+          height: auto;
           border-radius: 10px;
         }
         
@@ -973,8 +971,8 @@
         max-width: 1200px;
         margin: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
         align-items: start;
         justify-items: center;
         grid-auto-rows: auto;
@@ -984,9 +982,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         width: 100%;
-        max-width: 450px;
+        max-width: 100%;
         min-height: auto;
         height: auto;
         margin-left: auto;
@@ -994,7 +992,7 @@
         opacity: 0;
         transform: translateY(50px);
         animation: fadeInUp 0.8s ease-out forwards;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         overflow: visible;
       }
       
@@ -1071,8 +1069,6 @@
       .servico-img img {
         width: 100%;
         height: auto;
-        min-height: 200px;
-        max-height: 300px;
         object-fit: contain;
         object-position: center;
         transition: var(--transition);
@@ -1259,7 +1255,7 @@
     <!-- Serviço: NFC-e -->
     <div class="servico">
       <div class="servico-img">
-        <img src="https://images.unsplash.com/photo-1554224154-26032fced8bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=280&q=80" alt="NFC-e" />
+        <img src="./images/NFE.png" alt="NFC-e" />
       </div>
       <div class="servico-text">
         <h3>NFC-e</h3>
